@@ -1,371 +1,460 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قائمة الطعام</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        .menu-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        
-        h2 {
-            color: #555;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .item-name {
-            font-weight: bold;
-        }
-        
-        .item-price {
-            color: #333;
-        }
-        
-        .contact-info {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .code {
-            font-family: monospace;
-            margin-top: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Oakville Restaurant Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #181818;
+      color: #fff;
+      font-family: 'Tajawal', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    .menu-wrapper {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px;
+    }
+    .menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .logo-svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      margin-left: 8px;
+    }
+    .logo-svg svg {
+      width: 60px;
+      height: 60px;
+      display: block;
+    }
+    .menu-header h1 {
+      font-size: 2.2em;
+      color: #ffd700;
+      margin: 0;
+    }
+    .menu-main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .menu-section {
+      background: #222;
+      border-radius: 16px;
+      padding: 18px 16px;
+      min-width: 280px;
+      flex: 1 1 320px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .menu-section h2 {
+      color: #fff;
+      border-bottom: 2px solid #b22222;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      font-size: 1.3em;
+    }
+    .menu-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px 0;
+    }
+    .menu-section li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 1.1em;
+      border-bottom: 1px dashed #444;
+      padding-bottom: 4px;
+    }
+    .menu-section li span {
+      color: #ffd700;
+      font-weight: bold;
+    }
+    .menu-svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px auto 0 auto;
+      width: 64px;
+      height: 48px;
+    }
+    .menu-svg svg {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+    .qr-svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px auto;
+      width: 80px;
+      height: 80px;
+    }
+    .qr-svg svg {
+      width: 80px;
+      height: 80px;
+      display: block;
+    }
+    .sub-section {
+      margin-top: 10px;
+      background: #191919;
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+    .sub-section h3 {
+      color: #ffd700;
+      font-size: 1.1em;
+      margin: 0 0 4px 0;
+    }
+    .sub-section p {
+      margin: 0 0 4px 0;
+      color: #fff;
+      font-size: 0.98em;
+    }
+    .menu-footer {
+      text-align: center;
+      color: #ffd700;
+      margin-top: 32px;
+      font-size: 1.1em;
+    }
+    .contact-info {
+      text-align: center;
+      color: #fff;
+      font-size: 1.1em;
+    }
+    @media (max-width: 900px) {
+      .menu-main {
+        flex-direction: column;
+        gap: 0;
+      }
+      .menu-section {
+        min-width: 0;
+        width: 100%;
+        margin-bottom: 18px;
+      }
+      .logo-svg {
+        width: 40px;
+        height: 40px;
+      }
+      .logo-svg svg {
+        width: 40px;
+        height: 40px;
+      }
+      .menu-svg {
+        width: 48px;
+        height: 36px;
+      }
+      .menu-svg svg {
+        width: 36px;
+        height: 36px;
+      }
+      .qr-svg {
+        width: 60px;
+        height: 60px;
+      }
+      .qr-svg svg {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    @media (max-width: 600px) {
+      .menu-header h1 {
+        font-size: 1.3em;
+      }
+      .menu-section {
+        padding: 10px 6px;
+      }
+      .logo-svg {
+        width: 32px;
+        height: 32px;
+      }
+      .logo-svg svg {
+        width: 32px;
+        height: 32px;
+      }
+      .menu-svg {
+        width: 36px;
+        height: 24px;
+      }
+      .menu-svg svg {
+        width: 24px;
+        height: 24px;
+      }
+      .qr-svg {
+        width: 40px;
+        height: 40px;
+      }
+      .qr-svg svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- First Menu -->
-    <div class="menu-container">
-        <h1>هـ-بركـر</h1>
-        
-        <h2>بندروادن</h2>
-        <div class="menu-item">
-            <span class="item-name">مغفير</span>
-            <span class="item-price">6,000 دينار</span>
+  <div class="menu-wrapper">
+    <header class="menu-header">
+      <span class="logo-svg" aria-label="Oakville Logo">
+        <!-- Chef hat SVG -->
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="32" cy="40" rx="20" ry="12" fill="#fff"/>
+          <ellipse cx="32" cy="28" rx="24" ry="14" fill="#ffd700"/>
+          <ellipse cx="20" cy="22" rx="8" ry="6" fill="#fff"/>
+          <ellipse cx="44" cy="22" rx="8" ry="6" fill="#fff"/>
+        </svg>
+      </span>
+      <h1>Oakville Restaurant</h1>
+    </header>
+    <main class="menu-main">
+      <section class="menu-section wings">
+        <h2>أجنحة الدجاج</h2>
+        <ul>
+          <li>6 قطع <span>5,000 دينار</span></li>
+          <li>12 قطعة <span>10,000 دينار</span></li>
+          <li>18 قطعة <span>15,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Chicken Wings">
+          <!-- Chicken drumstick SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="32" rx="14" ry="8" fill="#ffd700"/>
+            <ellipse cx="34" cy="18" rx="8" ry="6" fill="#fff"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section shawarma">
+        <h2>شاورما</h2>
+        <ul>
+          <li>لفة دجاج <span>1,500 دينار</span></li>
+          <li>لفة لحم <span>2,000 دينار</span></li>
+          <li>صحن دجاج و رز <span>5,000 دينار</span></li>
+          <li>صحن لحم و رز <span>6,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Shawarma">
+          <!-- Shawarma skewer SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="8" width="8" height="28" rx="4" fill="#ffd700"/>
+            <rect x="22" y="36" width="4" height="8" rx="2" fill="#fff"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section eastern">
+        <h2>ماكولات شرقية</h2>
+        <ul>
+          <li>وجبة دولمة + لحم <span>7,000 دينار</span></li>
+          <li>وجبة دولمة نفر 1 <span>5,000 دينار</span></li>
+          <li>نصف وجبة دولمة <span>3,000 دينار</span></li>
+        </ul>
+        <div class="sub-section">
+          <h3>كبة</h3>
+          <ul>
+            <li>كبة مقلية <span>5,000 دينار</span></li>
+            <li>كبة حامض <span>5,000 دينار</span></li>
+          </ul>
         </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">8,000 دينار</span>
+        <div class="sub-section">
+          <h3>صحن سمك مشوي</h3>
+          <span>8,000 دينار</span>
         </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">10,000 دينار</span>
+        <span class="menu-svg" aria-label="Eastern Food">
+          <!-- Plate SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="36" rx="16" ry="6" fill="#fff"/>
+            <ellipse cx="24" cy="36" rx="10" ry="3" fill="#ffd700"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section steak">
+        <h2>ستيك</h2>
+        <ul>
+          <li>دجاج مشوي <span>7,000 دينار</span></li>
+          <li>ستيك لحم <span>8,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Steak">
+          <!-- Steak SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="32" rx="14" ry="8" fill="#ffd700"/>
+            <ellipse cx="24" cy="32" rx="8" ry="4" fill="#fff"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section drinks">
+        <h2>مشروبات</h2>
+        <ul>
+          <li>بيبسي <span>500 دينار</span></li>
+          <li>فانتا <span>500 دينار</span></li>
+          <li>سفن <span>500 دينار</span></li>
+          <li>شاي <span>500 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Drinks">
+          <!-- Soda can SVG -->
+          <svg width="32" height="48" viewBox="0 0 32 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="8" width="20" height="32" rx="6" fill="#fff"/>
+            <rect x="10" y="4" width="12" height="6" rx="3" fill="#ffd700"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section pizza">
+        <h2>بيتزا</h2>
+        <ul>
+          <li>بيبروني صغير <span>6,000 دينار</span> وسط <span>8,000 دينار</span> كبير <span>12,000 دينار</span></li>
+          <li>دجاج صغير <span>6,000 دينار</span> وسط <span>8,000 دينار</span> كبير <span>12,000 دينار</span></li>
+          <li>لحم صغير <span>6,000 دينار</span> وسط <span>8,000 دينار</span> كبير <span>12,000 دينار</span></li>
+          <li>خضروات صغير <span>5,000 دينار</span> وسط <span>7,000 دينار</span> كبير <span>10,000 دينار</span></li>
+          <li>مارغريتا صغير <span>5,000 دينار</span> وسط <span>7,000 دينار</span> كبير <span>10,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Pizza">
+          <!-- Pizza slice SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8 L44 40 L4 40 Z" fill="#ffd700"/>
+            <circle cx="24" cy="28" r="3" fill="#fff"/>
+            <circle cx="18" cy="36" r="2" fill="#fff"/>
+            <circle cx="30" cy="36" r="2" fill="#fff"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section burger">
+        <h2>همبركر</h2>
+        <ul>
+          <li>لحم <span>5,500 دينار</span></li>
+          <li>دجاج مشوي <span>5,000 دينار</span></li>
+          <li>لفة دجاج زنجر <span>5,000 دينار</span></li>
+        </ul>
+        <div class="sub-section">
+          <h3>وجبة أوفكيل</h3>
+          <p>شاورمة دجاج، شاورمة لحم، فينكر بطاطه، بيتزا و اثنين Pepsi</p>
+          <span>10,000 دينار</span>
         </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">12,000 دينار</span>
+        <div class="sub-section">
+          <h3>وجبة أوفكيل عائلي</h3>
+          <p>2 شاورما دجاج، 2 شاورما لحم، بيتزا وسط، فينكر بطاطه وسط، 4 Pepsi</p>
+          <span>20,000 دينار</span>
         </div>
-        
-        <h2>سمان تونة</h2>
-        <div class="menu-item">
-            <span class="item-name">مغفير</span>
-            <span class="item-price">6,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">8,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">10,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">12,000 دينار</span>
-        </div>
-        
-        <h2>دهــاج</h2>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">6,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">8,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">10,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">12,000 دينار</span>
-        </div>
-        
-        <h2>خضروات</h2>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">6,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">10,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">10,000 دينار</span>
-        </div>
-        
-        <h2>مارغرينا</h2>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">6,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">10,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">10,000 دينار</span>
-        </div>
-        
-        <h2>لحم</h2>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">5,500 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        
-        <h2>ريز-زو</h2>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ويسط</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">کشور جدا</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        
-        <h2>ثبتكــر</h2>
-        <div class="menu-item">
-            <span class="item-name">ثبتكر صغيرة</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">1000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ثبتكر وســط</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">2000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ثبتكــر كبيرة</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">3,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ثبتكر مثينة</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">4,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">ثبتكر بوئين</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">5,000 دينار</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">صحن لزير بطاطه</span>
-            <span class="item-price">20,000 دينار</span>
-        </div>
-        
-        <h2>كـوشيـر</h2>
-        <div class="menu-item">
-            <span class="item-name">همبرگر لحم</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">همبرگر دجاج مشوي</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">شـاورمـا دجـاج</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">وجيـة امنـال</span>
-            <span class="item-price"></span>
-        </div>
-        
+        <span class="menu-svg" aria-label="Burger">
+          <!-- Burger SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="32" rx="14" ry="6" fill="#ffd700"/>
+            <ellipse cx="24" cy="26" rx="14" ry="6" fill="#fff"/>
+            <ellipse cx="24" cy="20" rx="14" ry="6" fill="#ffd700"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section combo">
+        <h2>كومبو</h2>
+        <ul>
+          <li>همبركر لحم <span>7,000 دينار</span></li>
+          <li>همبركر دجاج مشوي <span>7,000 دينار</span></li>
+          <li>شاورما دجاج <span>7,000 دينار</span></li>
+          <li>وجبة أطفال <span>5,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Combo">
+          <!-- Burger and fries SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="16" cy="36" rx="8" ry="4" fill="#ffd700"/>
+            <rect x="28" y="32" width="10" height="8" rx="2" fill="#fff"/>
+            <rect x="30" y="28" width="6" height="6" rx="1" fill="#ffd700"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section rice">
+        <h2>رز - فاصوليا</h2>
+        <ul>
+          <li>قلبية، أرز، فاصوليا <span>7,000 دينار</span></li>
+          <li>برياني، فاصوليا - لحم <span>7,000 دينار</span></li>
+          <li>برياني، فاصوليا - دجاج <span>7,000 دينار</span></li>
+          <li>باستا <span>7,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Rice">
+          <!-- Rice bowl SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="36" rx="14" ry="6" fill="#fff"/>
+            <ellipse cx="24" cy="34" rx="10" ry="3" fill="#ffd700"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section finger">
+        <h2>فينكر</h2>
+        <ul>
+          <li>فينكر صغيرة <span>1,000 دينار</span></li>
+          <li>فينكر وسط <span>2,000 دينار</span></li>
+          <li>فينكر كبيرة <span>3,000 دينار</span></li>
+          <li>فينكر مقلية <span>4,000 دينار</span></li>
+          <li>فينكر حامض <span>5,000 دينار</span></li>
+          <li>صحن فينكر بطاطه <span>5,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Finger Food">
+          <!-- Drumstick SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="32" rx="10" ry="6" fill="#ffd700"/>
+            <ellipse cx="18" cy="38" rx="6" ry="3" fill="#fff"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section rice-laziz">
+        <h2>ريزو - لازيز</h2>
+        <ul>
+          <li>ريزو <span>5,000 دينار</span></li>
+          <li>صحن لازيز <span>5,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Rizo">
+          <!-- Rice bowl SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="36" rx="14" ry="6" fill="#fff"/>
+            <ellipse cx="24" cy="34" rx="10" ry="3" fill="#ffd700"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section fish">
+        <h2>سمك تونة</h2>
+        <ul>
+          <li>صغير <span>6,000 دينار</span></li>
+          <li>وسط <span>8,000 دينار</span></li>
+          <li>كبير <span>12,000 دينار</span></li>
+        </ul>
+        <span class="menu-svg" aria-label="Fish">
+          <!-- Fish SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="28" cy="32" rx="12" ry="6" fill="#ffd700"/>
+            <polygon points="12,32 20,28 20,36" fill="#fff"/>
+          </svg>
+        </span>
+      </section>
+      <section class="menu-section contact">
+        <h2>تواصل</h2>
         <div class="contact-info">
-            <div class="code">( sh-18 )</div>
-            <div>07/50 02/2 24/2</div>
-            <div>07/72 09/2 24/2</div>
+          <span class="qr-svg" aria-label="QR Code">
+            <!-- Simple QR SVG -->
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="16" height="16" fill="#fff"/>
+              <rect x="56" y="8" width="16" height="16" fill="#fff"/>
+              <rect x="8" y="56" width="16" height="16" fill="#fff"/>
+              <rect x="32" y="32" width="8" height="8" fill="#ffd700"/>
+              <rect x="48" y="48" width="8" height="8" fill="#ffd700"/>
+            </svg>
+          </span>
+          <p>0750 022 2112 - 0773 698 2112</p>
+          <p>بارك تاور (sh-18)</p>
         </div>
-    </div>
-    
-    <!-- Second Menu -->
-    <div class="menu-container">
-        <h1>مأكوالت شرقية</h1>
-        
-        <h2>إحتة الدجاج</h2>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">5,000</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">10,000</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">دينار</span>
-            <span class="item-price">15,000</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">قطعة 6</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">قطعة 12</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">قطعة 18</span>
-            <span class="item-price"></span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">وجبة دولة + لحم</span>
-            <span class="item-price">دينار 7,000</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">وجبة دولة نفر1</span>
-            <span class="item-price"></span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name">نصف وجبة دولة</span>
-            <span class="item-price">دينار 3,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">صحن سمك مشوي</span>
-            <span class="item-price">دينار 8,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">كبـــــة مقامه</span>
-            <span class="item-price">دينار 5,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">كبة حمامض</span>
-            <span class="item-price">دينار 5,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">اشـة دجـــاج</span>
-            <span class="item-price">دينار 1,500</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">اشـة لحمـــم</span>
-            <span class="item-price">دينار 2,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">صحن دجاج ووز</span>
-            <span class="item-price">دينار 7,500</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">صحن لحم ووز</span>
-            <span class="item-price">دينار 8,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">ثانية - أرز- فاصوليا</span>
-            <span class="item-price">دينار 7,000</span>
-        </div>
-        <div class="menu-item">
-            <span class="item-name"></span>
-            <span class="item-price">دينار 6,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">برباني - فاصوليا - لحم</span>
-            <span class="item-price">دينار 5,000</span>
-        </div>
-        
-        <div class="menu-item">
-            <span class="item-name">برباني - فاصوليا - دجاج</span>
-            <span class="item-price">دينار 5,000</span>
-        </div>
-        
-        <div class="contact-info">
-            <div class="code">( sh.18 ) بإراك ثابت تابور</div>
-            <div>0750 022 2112 - 0773 698 2112</div>
-        </div>
-    </div>
+      </section>
+    </main>
+    <footer class="menu-footer">
+      <p>Oakville Restaurant &copy; 2024</p>
+    </footer>
+  </div>
 </body>
 </html>
